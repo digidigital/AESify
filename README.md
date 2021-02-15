@@ -15,7 +15,7 @@ Encrypt and protect PDF files - A GUI for pikepdf -> qpdf
 * Define a page range if you just want to export a part of yout PDF
 
 ## Mini Roadmap
-V 1.5   The first public release will be for the Windows platform
-V 1.5   It will be released in binary form as a Portable Apps installer / ZIP
-V 1.6   The next release is planned to have english / german localization
-V 1.6.1 Support for Linux 
+* V 1.5   The first public release will be for the Windows platform
+* V 1.5   It will be released in binary form as a Portable Apps installer / ZIP
+* V 1.6   The next release is planned to have english / german localization
+* V 1.6.1 Support for Linux 
