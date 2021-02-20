@@ -13,6 +13,7 @@ Encrypt and protect PDF files - A GUI for pikepdf -> qpdf
     * Commenting
     * Filling in form fields
 * Define a page range if you just want to export a part of yout PDF
+* Create strong passwords
 * Ready for localization 
 
 ## Mini Roadmap
