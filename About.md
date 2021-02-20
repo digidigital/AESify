@@ -2,7 +2,7 @@
 
 AESify is free software. You can use it to securely encrypt PDF files.
 
-It's  is licensed under the [Mozilla Public License 2.0](https://github.com/digidigital/AESify/blob/main/LICENSE) and build using other great open source software:
+It's created by [Björn Seipel](https://blog.digidigital), licensed under the [Mozilla Public License 2.0](https://github.com/digidigital/AESify/blob/main/LICENSE) and build using other great open source software:
 
 [PySimpleGUI](PySimpleGUI.org) ([GNU Lesser General Public License (LGPL 3) +](https://github.com/PySimpleGUI/PySimpleGUI/blob/master/license.txt))
 
