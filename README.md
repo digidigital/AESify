@@ -14,8 +14,13 @@ Encrypt and protect PDF files - A GUI for pikepdf -> qpdf
     * Filling in form fields
 * Define a page range if you just want to export a part of yout PDF
 * Create strong passwords
-* Ready for localization 
+* Ready for localization
+* Supported OS: Windows 10 and Linux (e.g. Ubuntu 20.04) 
 
-## Mini Roadmap
-* V 1.5   It will be released in binary form as a Portable Apps installer / ZIP
+## Installation
+In order to use the copy/paste features on linux computers you need to install 'xclip', 'xsel' or 'wl-clipboard' with apt.
+
+The easiest way to "install" AESify is to download one of the release packages, unzip and simply run the binary.
+
+Alternatively you can download the code folder and run the AESify.py script. In this case you have to install the packages PySimpleGUI, pyperclip and pikepdf using pip3.     
 
