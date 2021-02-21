@@ -1,0 +1,209 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-21 01:20+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: AESify1.5.py:20
+#, python-brace-format
+msgid "AESify {0} - Encrypt PDF-Files Easily"
+msgstr ""
+
+#: AESify1.5.py:21
+msgid "Show password"
+msgstr ""
+
+#: AESify1.5.py:22
+msgid "Copy password to clipboard"
+msgstr ""
+
+#: AESify1.5.py:23
+msgid "Password used to open the document - Limited to non-restricted actions"
+msgstr ""
+
+#: AESify1.5.py:24
+msgid ""
+"If the document is opened with this password the user is not limited by "
+"document restrictions"
+msgstr ""
+
+#: AESify1.5.py:25
+msgid "Create password"
+msgstr ""
+
+#: AESify1.5.py:142
+msgid "Copy::Copy"
+msgstr ""
+
+#: AESify1.5.py:142
+msgid "Paste::Paste"
+msgstr ""
+
+#: AESify1.5.py:144
+msgid ""
+"In order to use right click copy/paste please install package 'xclip', 'xsel "
+"or 'wl-clipboard'. You can still use 'CTRL + v' to paste passwords."
+msgstr ""
+
+#: AESify1.5.py:155
+msgid "Input Settings"
+msgstr ""
+
+#: AESify1.5.py:156
+msgid "PDF:"
+msgstr ""
+
+#: AESify1.5.py:159 AESify1.5.py:184
+msgid "Browse"
+msgstr ""
+
+#: AESify1.5.py:161
+msgid "Password:"
+msgstr ""
+
+#: AESify1.5.py:175
+msgid "About"
+msgstr ""
+
+#: AESify1.5.py:181
+msgid "Output Settings"
+msgstr ""
+
+#: AESify1.5.py:182
+msgid "Encrypted PDF:"
+msgstr ""
+
+#: AESify1.5.py:186
+msgid "Open Password:"
+msgstr ""
+
+#: AESify1.5.py:195 AESify1.5.py:208
+msgid "Complexity:"
+msgstr ""
+
+#: AESify1.5.py:198
+msgid "Permissions Password:"
+msgstr ""
+
+#: AESify1.5.py:211
+msgid "Encryption level:"
+msgstr ""
+
+#: AESify1.5.py:215
+msgid "Page range from:"
+msgstr ""
+
+#: AESify1.5.py:219
+msgid "Page range to:"
+msgstr ""
+
+#: AESify1.5.py:223
+msgid "Save PDF"
+msgstr ""
+
+#: AESify1.5.py:228
+msgid "High Resolution printing"
+msgstr ""
+
+#: AESify1.5.py:228
+msgid "Allow high quality prints"
+msgstr ""
+
+#: AESify1.5.py:229
+msgid "Low Resolution Printing (150dpi)"
+msgstr ""
+
+#: AESify1.5.py:229
+msgid "Allow a print quality of 150dpi"
+msgstr ""
+
+#: AESify1.5.py:230
+msgid "Document Assembly"
+msgstr ""
+
+#: AESify1.5.py:230
+msgid "Allow adding/inserting and rotating of pages"
+msgstr ""
+
+#: AESify1.5.py:231
+msgid "Content Copying"
+msgstr ""
+
+#: AESify1.5.py:231
+msgid "Allow copying of text, images, etc."
+msgstr ""
+
+#: AESify1.5.py:232
+msgid "Commenting"
+msgstr ""
+
+#: AESify1.5.py:232
+msgid "Allow annotations"
+msgstr ""
+
+#: AESify1.5.py:233
+msgid "Filling in form fields"
+msgstr ""
+
+#: AESify1.5.py:233
+msgid "Allow user to fill in forms"
+msgstr ""
+
+#: AESify1.5.py:234
+msgid "Forms, Signing, Template Pages"
+msgstr ""
+
+#: AESify1.5.py:234
+msgid "Allow creation of template pages, signing and filling of form fields"
+msgstr ""
+
+#: AESify1.5.py:235
+msgid "Document Restrictions"
+msgstr ""
+
+#: AESify1.5.py:362
+msgid "Missing or wrong password"
+msgstr ""
+
+#: AESify1.5.py:367
+msgid "Unable to open file."
+msgstr ""
+
+#: AESify1.5.py:408
+msgid ""
+"Error: If the owner password is blank the open passwort should be blank as "
+"well."
+msgstr ""
+
+#: AESify1.5.py:411
+msgid "The open password contains invalid characters."
+msgstr ""
+
+#: AESify1.5.py:414
+msgid "The owner password contains invalid characters."
+msgstr ""
+
+#: AESify1.5.py:443
+msgid "File saved."
+msgstr ""
+
+#: AESify1.5.py:445
+msgid "An unexpected error occured... :("
+msgstr ""
+
+#: AESify1.5.py:447
+msgid "Please select an input file first!"
+msgstr ""
