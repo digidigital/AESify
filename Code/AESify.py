@@ -1,6 +1,7 @@
 #!/usr/local/bin/python
 # coding: utf-8
-from os import path 
+from os import path, getcwd, environ 
+import locale
 import secrets
 import webbrowser
 import gettext
@@ -11,14 +12,14 @@ import PySimpleGUI as sg
 import pyperclip
 from pikepdf import Pdf, Page, Permissions, Encryption, PasswordError, PdfError 
 
+# Environment of Windows executable created with cxFreeze seems to have no language setting
+if "LANG" not in environ:
+    environ['LANG'] = locale.getdefaultlocale()[0] 
 
 # Set up translation, fall back to default if no translation file is found 
-try:
-    localization = gettext.translation('AESify', localedir='./locale')
-    localization.install()
-    _=localization.gettext
-except FileNotFoundError:
-    _=gettext.gettext
+localization = gettext.translation('AESify', localedir=getcwd() + '/locale', fallback=True)
+localization.install()
+_=localization.gettext
 
 aboutPage = 'https://github.com/digidigital/AESify/blob/main/About.md'
 version = '1.5.1'
@@ -33,7 +34,6 @@ pasteString=_('Paste') + '::Paste'
 
 # Characters that can be misinterpreted by humans (1 I l | O 0 o ' ` , . / \ ;) and some hard to reach special characters have been removed 
 passwordPool = '23456789abcdefghjkmnrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ!#$%&()*+-<=>?@[]_:' 
-
 
 theme='DefaultNoMoreNagging'
 sg.theme(theme)   
@@ -454,7 +454,3 @@ while True:
             popUp(_('Please select an input file first!'))
             
 window.close()
-
-
-
-
