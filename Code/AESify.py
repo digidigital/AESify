@@ -11,28 +11,33 @@ import PySimpleGUI as sg
 import pyperclip
 from pikepdf import Pdf, Page, Permissions, Encryption, PasswordError, PdfError 
 
-# Set up translation, ignore all errors 
+
+# Set up translation, fall back to default if no translation file is found 
 try:
     localization = gettext.translation('AESify', localedir='./locale')
     localization.install()
     _=localization.gettext
-except:
+except FileNotFoundError:
     _=gettext.gettext
 
 aboutPage = 'https://github.com/digidigital/AESify/blob/main/About.md'
-version = '1.5'
+version = '1.5.1'
 applicationTitle = _('AESify {0} - Encrypt PDF-Files Easily').format(version)
 showPasswordText = _('Show password')
 copyPasswordText = _('Copy password to clipboard')
 openPasswordText = _('Password used to open the document - Limited to non-restricted actions')
 permissionsPasswordText = _('If the document is opened with this password the user is not limited by document restrictions')
 createPasswordText=_('Create password')
+copyString=_('Copy') + '::Copy'
+pasteString=_('Paste') + '::Paste'
 
 # Characters that can be misinterpreted by humans (1 I l | O 0 o ' ` , . / \ ;) and some hard to reach special characters have been removed 
 passwordPool = '23456789abcdefghjkmnrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ!#$%&()*+-<=>?@[]_:' 
 
 
 theme='DefaultNoMoreNagging'
+sg.theme(theme)   
+background = sg.LOOK_AND_FEEL_TABLE[theme]['BACKGROUND']
 
 # Toggles between visible and masked view by switching between two text fields. Workaround since I did not find a method in pySimpleGUI to update password_char :(
 def togglePassword(button, maskedText, clearText):
@@ -136,18 +141,18 @@ def updatePassword(key, password):
     key = re.sub('Password', '', key)
     window['-Complexity' + key + '-'].update_bar(evalPassword(password))
 
-sg.theme(theme)   
-background = sg.LOOK_AND_FEEL_TABLE[theme]['BACKGROUND']
-
 # Check if pyperclip dependencies are installed
 if sys.platform.startswith('linux'):   
     if pyperclip._executable_exists('xclip') or pyperclip._executable_exists('xsel') or pyperclip._executable_exists('wl-clipboard'):
         copyPasteEnabled=True
-        rightClickMenu=[_('Copy::Copy'), _('Paste::Paste')]
+        rightClickMenu=[copyString, pasteString]
     else:
         sg.popup_no_titlebar(_("In order to use right click copy/paste please install package 'xclip', 'xsel or 'wl-clipboard'. You can still use 'CTRL + v' to paste passwords."))
         copyPasteEnabled=False
         rightClickMenu=[]
+else:
+    copyPasteEnabled=True
+    rightClickMenu=[copyString, pasteString]
 
 # Centralized layout settings
 textSizeDefault=(58,1)
@@ -213,8 +218,8 @@ column3 = [
         sg.ProgressBar(9, orientation='h', size=progressBarSizeDefault, key='-ComplexityOwner-')
     ], 
     [sg.Text(_('Encryption level:'), size=(21,1)), 
-        sg.Radio('AES-128 Bit', "RADIO1", k='AES128Bit', size=(20,1)), 
-        sg.Radio('AES-256 Bit', "RADIO1", k='AES256Bit', default=True)
+        sg.Radio('128-Bit AES', "RADIO1", k='AES128Bit', size=(20,1)), 
+        sg.Radio('256-Bit AES', "RADIO1", k='AES256Bit', default=True)
     ],
     [sg.Text(_('Page range from:'), size=(21,1)), 
         sg.InputText(k='-PageFrom-', default_text='1', readonly=True, size=(4,1), enable_events=True), 
@@ -224,7 +229,7 @@ column3 = [
         sg.InputText(k='-PageTo-', default_text='1', readonly=True, size=(4,1), enable_events=True), 
         sg.Slider(k='-PageToSlider-', resolution=1, disable_number_display=True, size=sliderSizeDefault, range=(1,99), orientation='h', enable_events=True)
     ],
-    [sg.Button(_('Save PDF'), k='Save PDF', pad=((5,0),(15,0)))]
+    [sg.Button(_('Save PDF'), k='Save PDF', pad=((5,0),(15,10)))]
 ]
 
 column4 = [
@@ -233,9 +238,9 @@ column4 = [
         [sg.Checkbox(_('Low Resolution Printing (150dpi)'), k='print_lowres', tooltip=_('Allow a print quality of 150dpi'), enable_events=True, default=True)],
         [sg.Checkbox(_('Document Assembly'), k='modify_assembly', tooltip=_('Allow adding/inserting and rotating of pages'), default=True)],
         [sg.Checkbox(_('Content Copying'), k='extract', tooltip=_('Allow copying of text, images, etc.'), default=True)], 
-        [sg.Checkbox(_('Commenting'), k='modify_annotation', tooltip=_('Allow annotations'), default=True)],
-        [sg.Checkbox(_('Filling in form fields'), k='modify_form', tooltip=_('Allow user to fill in forms'), default=True)],
-        [sg.Checkbox(_('Forms, Signing, Template Pages'), k='modify_other', tooltip=_('Allow creation of template pages, signing and filling of form fields'), default=True)]      
+        [sg.Checkbox(_('Commenting'), k='modify_annotation', tooltip=_('Allow commenting, form field fill-in and signing'), default=True)],
+        [sg.Checkbox(_('Form field fill-in or signing'), k='modify_form', tooltip=_('Allow form field fill-in, signing and creation of template pages'), default=True)],
+        [sg.Checkbox(_('Forms, Signing, Template Pages'), k='modify_other', tooltip=_('Allow changing the document, document assembly, form field fill-in, signing and creation of template pages'), default=True)]      
     ], title=_('Document Restrictions'), relief=sg.RELIEF_SUNKEN)]
 ]
 
@@ -318,8 +323,7 @@ while True:
     # Switch off highres printing permission checkbox if lowres printing is selected
     if event == 'print_lowres':
         if (values['print_lowres'] and values['print_highres']) or (not values['print_lowres'] and values['print_highres']) :        
-            window['print_highres'].update(value = False)
-       
+            window['print_highres'].update(value = False)   
 
     # Switch on lowres printing permission checkbox if highres printing is selected
     if event == 'print_highres' and not values['print_lowres'] and values['print_highres']:        
