@@ -1,14 +1,14 @@
-# German translations for PACKAGE package.
+# German translations for AESify package.
 # Copyright (C) 2021 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the AESify package.
 # Bjoern, 2021.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: 1.5.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-21 01:20+0100\n"
-"PO-Revision-Date: 2021-02-21 01:26+0100\n"
+"POT-Creation-Date: 2021-02-21 18:05+0100\n"
+"PO-Revision-Date: 2021-02-21 18:06+0100\n"
 "Last-Translator: Bjoern\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -17,196 +17,200 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: AESify1.5.py:20
+#: AESify.py:25
 #, python-brace-format
 msgid "AESify {0} - Encrypt PDF-Files Easily"
 msgstr "AESify {0} - PDF-Dateien einfach verschlüsseln"
 
-#: AESify1.5.py:21
+#: AESify.py:26
 msgid "Show password"
 msgstr "Passwort anzeigen"
 
-#: AESify1.5.py:22
+#: AESify.py:27
 msgid "Copy password to clipboard"
 msgstr "Passwort in Zwischenablage kopieren"
 
-#: AESify1.5.py:23
+#: AESify.py:28
 msgid "Password used to open the document - Limited to non-restricted actions"
 msgstr "Passwort zum Öffnen des Dokuments - Leser ist beschränkt auf zugelassene Aktionen"
 
-#: AESify1.5.py:24
+#: AESify.py:29
 msgid ""
 "If the document is opened with this password the user is not limited by "
 "document restrictions"
 msgstr "Wird das Dokument mit diesem Passwort geöffnet, hat der Leser vollen "
 "Zugriff"
 
-#: AESify1.5.py:25
+#: AESify.py:30
 msgid "Create password"
 msgstr "Passwort erzeugen"
 
-#: AESify1.5.py:142
-msgid "Copy::Copy"
+#: AESify.py:31
+msgid "Copy"
 msgstr "Kopieren"
 
-#: AESify1.5.py:142
-msgid "Paste::Paste"
+#: AESify.py:32
+msgid "Paste"
 msgstr "Einfügen"
 
-#: AESify1.5.py:144
+#: AESify.py:150
 msgid ""
 "In order to use right click copy/paste please install package 'xclip', 'xsel "
 "or 'wl-clipboard'. You can still use 'CTRL + v' to paste passwords."
 msgstr "Um Kopieren / Einfügen über Rechts-Klick nutzen zu können, installiere "
 "bitte 'xclip', 'xsel' oder 'wl-clipboard'. Nutze alternativ 'CTRL + v'"
 
-#: AESify1.5.py:155
+#: AESify.py:164
 msgid "Input Settings"
 msgstr "Quelldatei-Einstellungen"
 
-#: AESify1.5.py:156
+#: AESify.py:165
 msgid "PDF:"
 msgstr "PDF:"
 
-#: AESify1.5.py:159 AESify1.5.py:184
+#: AESify.py:168 AESify.py:193
 msgid "Browse"
 msgstr "Öffnen"
 
-#: AESify1.5.py:161
+#: AESify.py:170
 msgid "Password:"
 msgstr "Passwort:"
 
-#: AESify1.5.py:175
+#: AESify.py:184
 msgid "About"
 msgstr "Über"
 
-#: AESify1.5.py:181
+#: AESify.py:190
 msgid "Output Settings"
 msgstr "Ausgabe-Einstellungen"
 
-#: AESify1.5.py:182
+#: AESify.py:191
 msgid "Encrypted PDF:"
 msgstr "Verschlüsseltes PDF:"
 
-#: AESify1.5.py:186
+#: AESify.py:195
 msgid "Open Password:"
 msgstr "Öffnen-Passwort:"
 
-#: AESify1.5.py:195 AESify1.5.py:208
+#: AESify.py:204 AESify.py:217
 msgid "Complexity:"
 msgstr "Komplexität:"
 
-#: AESify1.5.py:198
+#: AESify.py:207
 msgid "Permissions Password:"
 msgstr "Berechtigungspasswort:"
 
-#: AESify1.5.py:211
+#: AESify.py:220
 msgid "Encryption level:"
-msgstr "Verschlüsselungsniveau:"
+msgstr "Verschlüsselungsebene:"
 
-#: AESify1.5.py:215
+#: AESify.py:224
 msgid "Page range from:"
 msgstr "Seitenbereich von:"
 
-#: AESify1.5.py:219
+#: AESify.py:228
 msgid "Page range to:"
 msgstr "Seitenbereich bis:"
 
-#: AESify1.5.py:223
+#: AESify.py:232
 msgid "Save PDF"
 msgstr "Speichern"
 
-#: AESify1.5.py:228
+#: AESify.py:237
 msgid "High Resolution printing"
 msgstr "Drucken (Hohe Qualität)"
 
-#: AESify1.5.py:228
+#: AESify.py:237
 msgid "Allow high quality prints"
 msgstr "Erlaubt Ausdrucke mit hoher Qualität"
 
-#: AESify1.5.py:229
+#: AESify.py:238
 msgid "Low Resolution Printing (150dpi)"
 msgstr "Drucken mit 150dpi"
 
-#: AESify1.5.py:229
+#: AESify.py:238
 msgid "Allow a print quality of 150dpi"
 msgstr "Erlaubt Ausdrucke mit niedriger Qualität"
 
-#: AESify1.5.py:230
+#: AESify.py:239
 msgid "Document Assembly"
 msgstr "Dokumentzusammenstellung"
 
-#: AESify1.5.py:230
+#: AESify.py:239
 msgid "Allow adding/inserting and rotating of pages"
 msgstr "Erlaubt das Einfügen, Löschen und Drehen von Seiten"
 
-#: AESify1.5.py:231
+#: AESify.py:240
 msgid "Content Copying"
 msgstr "Kopieren von Inhalten"
 
-#: AESify1.5.py:231
+#: AESify.py:240
 msgid "Allow copying of text, images, etc."
 msgstr "Erlaubt das Kopieren von Text, Bildern und anderen Inhalten"
 
-#: AESify1.5.py:232
+#: AESify.py:241
 msgid "Commenting"
 msgstr "Kommentieren"
 
-#: AESify1.5.py:232
-msgid "Allow annotations"
-msgstr "Erlaubt die Nutzung der Kommentarfunktion"
+#: AESify.py:241
+msgid "Allow commenting, form field fill-in and signing"
+msgstr "Erlaubt Kommentare, Ausfüllen von Formularen und Signieren"
 
-#: AESify1.5.py:233
-msgid "Filling in form fields"
-msgstr "Formularfelder ausfüllen"
+#: AESify.py:242
+msgid "Form field fill-in or signing"
+msgstr "Formulare ausfüllen und unterschreiben"
 
-#: AESify1.5.py:233
-msgid "Allow user to fill in forms"
-msgstr "Erlaubt das Ausfüllen von Formularfeldern und Unterschreiben vorhandener Unterschriftsfelder"
+#: AESify.py:242
+msgid "Allow form field fill-in, signing and creation of template pages"
+msgstr "Erlaubt das Ausfüllen von Formularfeldern und Unterschreiben sowie die Erstellung von Vorlagen"
 
-#: AESify1.5.py:234
+#: AESify.py:243
 msgid "Forms, Signing, Template Pages"
-msgstr "Kommentieren, Formulare, Unterschreiben"
+msgstr "Formulare, Unterschreiben, Vorlagen"
 
-#: AESify1.5.py:234
-msgid "Allow creation of template pages, signing and filling of form fields"
-msgstr "Erlaubt das Kommentieren, Ausfüllen von Formularfeldern und Unterschreiben vorhandener Unterschriftsfelder"
+#: AESify.py:243
+msgid ""
+"Allow changing the document, document assembly, form field fill-in, signing "
+"and creation of template pages"
+msgstr ""
+"Erlaubt das Ändern des Dokuments, Dokumentenzusammestellung, Formularfelder "
+"ausfüllen, unterschreiben sowie Vorlagenseiten"
 
-#: AESify1.5.py:235
+#: AESify.py:244
 msgid "Document Restrictions"
 msgstr "Bearbeitungsrechte"
 
-#: AESify1.5.py:362
+#: AESify.py:369
 msgid "Missing or wrong password"
 msgstr "Fehlendes oder falsches Passwort"
 
-#: AESify1.5.py:367
+#: AESify.py:374
 msgid "Unable to open file."
 msgstr "Datei kann nicht geöffnet werden"
 
-#: AESify1.5.py:408
+#: AESify.py:415
 msgid ""
 "Error: If the owner password is blank the open passwort should be blank as "
 "well."
 msgstr "Bei leerem Berechtigunspasswort muss das Öffnen-Passwort ebenfalls "
 "leer sein."
 
-#: AESify1.5.py:411
+#: AESify.py:418
 msgid "The open password contains invalid characters."
-msgstr "Das Öffnen-Passwort enthält ungültige Zeichen."
+msgstr "Das Öffnen-Passwort enthält unzulässige Zeichen."
 
-#: AESify1.5.py:414
+#: AESify.py:421
 msgid "The owner password contains invalid characters."
-msgstr "Das Berechtigungspasswort enthält ungültige Zeichen."
+msgstr "Das Berechtigungspasswort enthält unzulässige Zeichen."
 
-#: AESify1.5.py:443
+#: AESify.py:450
 msgid "File saved."
 msgstr "Datei gespeichert."
 
-#: AESify1.5.py:445
+#: AESify.py:452
 msgid "An unexpected error occured... :("
 msgstr "Ein unerwarteter Fehler ist aufgetreten... :("
 
-#: AESify1.5.py:447
+#: AESify.py:454
 msgid "Please select an input file first!"
 msgstr "Bitte wähle zuerst eine Quelldatei!"
