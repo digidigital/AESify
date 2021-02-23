@@ -10,7 +10,7 @@ import re
 import AESifyIcons as icons
 import PySimpleGUI as sg
 import pyperclip
-from pikepdf import Pdf, Page, Permissions, Encryption, PasswordError, PdfError 
+from pikepdf import Pdf, Page, Permissions, Encryption, PasswordError, PdfError, _cpphelpers 
 
 # Environment of Windows executable created with cxFreeze seems to have no language setting
 if "LANG" not in environ:
