@@ -12,12 +12,18 @@ import PySimpleGUI as sg
 import pyperclip
 from pikepdf import Pdf, Page, Permissions, Encryption, PasswordError, PdfError, _cpphelpers 
 
-# Environment of Windows executable created with cxFreeze seems to have no language setting
+# Needed for pyinstaller onefile...
+try:
+    workingDirectory = sys._MEIPASS
+except Exception:
+    workingDirectory = getcwd()
+
+# Environment of Windows executable created with cxFreeze seems to have no language setting in environ
 if "LANG" not in environ:
     environ['LANG'] = locale.getdefaultlocale()[0] 
 
 # Set up translation, fall back to default if no translation file is found 
-localization = gettext.translation('AESify', localedir=getcwd() + '/locale', fallback=True)
+localization = gettext.translation('AESify', localedir=workingDirectory + '/locale', fallback=True)
 localization.install()
 _=localization.gettext
 
