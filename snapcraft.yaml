@@ -1,30 +1,28 @@
 name: aesify # you probably want to 'snapcraft register <name>'
+title: AESify
 base: core18 # the base snap is the execution environment for this snap
-version: git # just for humans, typically '1.2+git' or '1.3.2'
-summary: Encrypt PDF-Files easily with 128-Bit or 256-Bit AES# 79 char long summary
+adopt-info: aesify
+summary: Encrypt PDF-Files easily with 128-Bit or 256-Bit AES encyption
 description: |
   With AESify you can encrypt PDF files with "military grade" 
   Advanced Encryption Standard (AES) encryption, set "Document open" 
   and "Permissions" passwords, set document restrictions and define a 
   page range if you just want to export a part of your PDF.
+  If you want to access removable (mounted) media/drives do not
+  forget to allow read/write access in AESify's snap store permission 
+  settings! 
 
 icon: shield.svg
 license: MPL-2.0
 compression: lzo 
-grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: devmode # use 'strict' once you have the right plugs and slots
-
-parts:
-  aesify:
-    plugin: python
-    python-version: python3
-    source: https://github.com/digidigital/AESify.git
-    python-packages: [pyperclip, PySimpleGUI, pikepdf]
-    stage-packages: [xclip] 
+grade: stable # 'stable' 'devel'
+confinement: strict # 'strict' 'devmode'
 
 apps:
   aesify:
-    command: Code/AESify.py
+    command: python3 $SNAP/Code/AESify.py
+    command-chain: [bin/debian-multiarch-triplet-provider-launch, bin/tcltk-launch]
+    extensions: [gnome-3-28]
     plugs:
       - home
       - removable-media
@@ -32,4 +30,26 @@ apps:
       - desktop-legacy
       - wayland
       - unity7
+      - x11
+    
+parts:
+  get-source:
+    plugin: dump
+    source: https://github.com/digidigital/AESify.git
+  debian-multiarch-triplet-provider-launch:
+    plugin: nil
+    stage-snaps: [debian-multiarch-triplet-provider-launch]    	
+  tcltk-launch:
+    plugin: nil
+    stage-snaps: [tcltk-launch]
+  aesify:
+    plugin: python
+    source: https://github.com/digidigital/AESify.git
+    source-type: git
+    python-packages: [pyperclip, PySimpleGUI, pikepdf]
+    stage-packages: [xclip, python3-tk, tcl] 
+    override-pull: |
+      snapcraftctl pull  
+      snapcraftctl set-version "$(git describe --tags)"
+
    
