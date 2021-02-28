@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=AESify
+GenericName=Document Encryption
+Comment=AESify - Encrypt PDF-Files easily
+Exec=aesify
+Icon=${SNAP}/meta/gui/aesify.svg
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=true
