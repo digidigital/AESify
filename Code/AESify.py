@@ -18,21 +18,8 @@ try:
 except Exception:
     scriptRoot = getcwd()
     
-#snap debug info
+#set the script root if in Snap environment
 if "SNAP_COMMON" in environ:
-    message = 'locale.getdefaultlocale()[0] =' + locale.getdefaultlocale()[0] + ' - '
-    message = message + 'CWD' + getcwd() + ' - '
-    message = message + 'Environment' + str(environ) + ' - '
-    try:
-        gettext.translation('AESify', localedir=scriptRoot + '/locale')
-    except Exception as e:
-        message = message + str(e) 
-    sg.Window('',
-        [[sg.Multiline(message)]
-        ],         
-        auto_size_text = True,
-        finalize = True  
-    )
     scriptRoot = environ['SNAP'] + '/Code/'
     
 # Environment of Windows executable created with cxFreeze seems to have no language setting in environ
@@ -45,7 +32,7 @@ localization.install()
 _=localization.gettext
 
 aboutPage = 'https://github.com/digidigital/AESify/blob/main/About.md'
-version = '1.5.1'
+version = '1.5.2'
 applicationTitle = _('AESify {0} - Encrypt PDF-Files Easily').format(version)
 showPasswordText = _('Show password')
 copyPasswordText = _('Copy password to clipboard')
