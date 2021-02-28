@@ -22,8 +22,12 @@ except Exception:
 if "SNAP_COMMON" in environ:
     message = 'locale.getdefaultlocale()[0] =' + locale.getdefaultlocale()[0] + ' - '
     message = message + 'CWD' + getcwd() + ' - '
-    message = message + 'Environment' + str(environ)
-    popWindow = sg.Window('',
+    message = message + 'Environment' + str(environ) + ' - '
+    try:
+        gettext.translation('AESify', localedir=workingDirectory + '/locale')
+    except Exception as e:
+        message = message + str(e) 
+    sg.Window('',
         [[sg.Multiline(message)]
         ],         
         auto_size_text = True,
