@@ -17,7 +17,19 @@ try:
     workingDirectory = sys._MEIPASS
 except Exception:
     workingDirectory = getcwd()
-
+    
+#snap debug info
+if "SNAP_COMMON" in environ:
+    message = 'locale.getdefaultlocale()[0] =' + locale.getdefaultlocale()[0] + ' - '
+    message = message + 'CWD' + getcwd() + ' - '
+    message = message + 'Environment' + str(environ)
+    popWindow = sg.Window('',
+        [[sg.Multiline(message)]
+        ],         
+        auto_size_text = True,
+        finalize = True  
+    )
+    
 # Environment of Windows executable created with cxFreeze seems to have no language setting in environ
 if "LANG" not in environ:
     environ['LANG'] = locale.getdefaultlocale()[0] 
