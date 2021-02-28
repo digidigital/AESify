@@ -36,12 +36,12 @@ parts:
   get-source:
     plugin: dump
     source: https://github.com/digidigital/AESify.git
-  debian-multiarch-triplet-provider-launch:
-    plugin: nil
-    stage-snaps: [debian-multiarch-triplet-provider-launch]
   tcltk-launch:
     plugin: nil
     stage-snaps: [tcltk-launch]
+  debian-multiarch-triplet-provider-launch:
+    plugin: nil
+    stage-snaps: [debian-multiarch-triplet-provider-launch]
   aesify:
     plugin: python
     source: https://github.com/digidigital/AESify.git
