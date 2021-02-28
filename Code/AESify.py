@@ -33,7 +33,7 @@ if "SNAP_COMMON" in environ:
         auto_size_text = True,
         finalize = True  
     )
-    scriptRoot = environ['SNAP']
+    scriptRoot = environ['SNAP'] + '/Code/'
     
 # Environment of Windows executable created with cxFreeze seems to have no language setting in environ
 if "LANG" not in environ:
