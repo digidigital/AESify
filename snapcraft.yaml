@@ -22,7 +22,7 @@ apps:
   aesify:
     command: python3 $SNAP/Code/AESify.py
     command-chain: [bin/debian-multiarch-triplet-provider-launch, bin/tcltk-launch]
-    desktop: $SNAP/gui/aesify.desktop
+    desktop: /build/aesify/parts/get-source/src/gui/aesify.desktop
     extensions: [gnome-3-28]
     plugs:
       - home
