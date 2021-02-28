@@ -14,9 +14,9 @@ from pikepdf import Pdf, Page, Permissions, Encryption, PasswordError, PdfError,
 
 # Needed for pyinstaller onefile...
 try:
-    workingDirectory = sys._MEIPASS
+    scriptRoot = sys._MEIPASS
 except Exception:
-    workingDirectory = getcwd()
+    scriptRoot = getcwd()
     
 #snap debug info
 if "SNAP_COMMON" in environ:
@@ -24,7 +24,7 @@ if "SNAP_COMMON" in environ:
     message = message + 'CWD' + getcwd() + ' - '
     message = message + 'Environment' + str(environ) + ' - '
     try:
-        gettext.translation('AESify', localedir=workingDirectory + '/locale')
+        gettext.translation('AESify', localedir=scriptRoot + '/locale')
     except Exception as e:
         message = message + str(e) 
     sg.Window('',
@@ -33,13 +33,14 @@ if "SNAP_COMMON" in environ:
         auto_size_text = True,
         finalize = True  
     )
+    scriptRoot = environ['SNAP']
     
 # Environment of Windows executable created with cxFreeze seems to have no language setting in environ
 if "LANG" not in environ:
     environ['LANG'] = locale.getdefaultlocale()[0] 
 
 # Set up translation, fall back to default if no translation file is found 
-localization = gettext.translation('AESify', localedir=workingDirectory + '/locale', fallback=True)
+localization = gettext.translation('AESify', localedir=scriptRoot + '/locale', fallback=True)
 localization.install()
 _=localization.gettext
 
