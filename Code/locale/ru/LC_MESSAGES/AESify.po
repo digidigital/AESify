@@ -1,0 +1,216 @@
+# Russian translations for AESify package.
+# Copyright (C) 2021
+# This file is distributed under the same license as the PACKAGE package.
+# Nataliia Eisenkrein, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-21 18:05+0100\n"
+"PO-Revision-Date: 2021-06-23 00:00+0100\n"
+"Last-Translator: Nataliia Eisenkrein\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: AESify.py:25
+#, python-brace-format
+msgid "AESify {0} - Encrypt PDF-Files Easily"
+msgstr "AESify {0} - Легкое шифрование PDF-файлов"
+
+#: AESify.py:26
+msgid "Show password"
+msgstr "Показать пароль"
+
+#: AESify.py:27
+msgid "Copy password to clipboard"
+msgstr "Копирование пароля в буфер обмена"
+
+#: AESify.py:28
+msgid "Password used to open the document - Limited to non-restricted actions"
+msgstr "Пароль, используемый для открытия документа - Ограничено для нелимитированных действий"
+
+#: AESify.py:29
+msgid ""
+"If the document is opened with this password the user is not limited by "
+"document restrictions"
+msgstr "Если документ открыт с этим паролем, пользователь не ограничен "
+"ограничениями документа"
+
+#: AESify.py:30
+msgid "Create password"
+msgstr "Создать пароль"
+
+#: AESify.py:31
+msgid "Copy"
+msgstr "Копировать"
+
+#: AESify.py:32
+msgid "Paste"
+msgstr "Bставить"
+
+#: AESify.py:150
+msgid ""
+"In order to use right click copy/paste please install package 'xclip', 'xsel "
+"or 'wl-clipboard'. You can still use 'CTRL + v' to paste passwords."
+msgstr "Для использования копирования/вставки правой кнопкой мыши установите пакет "
+"'xclip', 'xsel' или 'wl-clipboard'. Вы по-прежнему можете использовать "
+"'CTRL + v' для вставки паролей."
+
+#: AESify.py:164
+msgid "Input Settings"
+msgstr "Настройки ввода"
+
+#: AESify.py:165
+msgid "PDF:"
+msgstr "PDF:"
+
+#: AESify.py:168 AESify.py:193
+msgid "Browse"
+msgstr "Просмотреть"
+
+#: AESify.py:170
+msgid "Password:"
+msgstr "Пароль:"
+
+#: AESify.py:184
+msgid "About"
+msgstr "О сайте"
+
+#: AESify.py:190
+msgid "Output Settings"
+msgstr "Настройки выхода"
+
+#: AESify.py:191
+msgid "Encrypted PDF:"
+msgstr "Зашифрованный PDF:"
+
+#: AESify.py:195
+msgid "Open Password:"
+msgstr "Открыть пароль:"
+
+#: AESify.py:204 AESify.py:217
+msgid "Complexity:"
+msgstr "Сложность:"
+
+#: AESify.py:207
+msgid "Permissions Password:"
+msgstr "Пароль авторизации:"
+
+#: AESify.py:220
+msgid "Encryption level:"
+msgstr "Уровень шифрования:"
+
+#: AESify.py:224
+msgid "Page range from:"
+msgstr "Диапазон страниц от:"
+
+#: AESify.py:228
+msgid "Page range to:"
+msgstr "Диапазон страниц до:"
+
+#: AESify.py:232
+msgid "Save PDF"
+msgstr "Сохранить PDF"
+
+#: AESify.py:237
+msgid "High Resolution printing"
+msgstr "Печать с высоким разрешением"
+
+#: AESify.py:237
+msgid "Allow high quality prints"
+msgstr "Разрешить печать с высоким разрешением"
+
+#: AESify.py:238
+msgid "Low Resolution Printing (150dpi)"
+msgstr "Печать с низким разрешением (150dpi)"
+
+#: AESify.py:238
+msgid "Allow a print quality of 150dpi"
+msgstr "Разрешить качество печати 150dpi"
+
+#: AESify.py:239
+msgid "Document Assembly"
+msgstr "Сборка документов"
+
+#: AESify.py:239
+msgid "Allow adding/inserting and rotating of pages"
+msgstr "Разрешить добавлять/вставлять и вращать страницы"
+
+#: AESify.py:240
+msgid "Content Copying"
+msgstr "Копирование контента"
+
+#: AESify.py:240
+msgid "Allow copying of text, images, etc."
+msgstr "Разрешить копирование текста, изображений и т.д."
+
+#: AESify.py:241
+msgid "Commenting"
+msgstr "Комментирование"
+
+#: AESify.py:241
+msgid "Allow commenting, form field fill-in and signing"
+msgstr "Разрешить комментирование, заполнение полей формы и подпись"
+
+#: AESify.py:242
+msgid "Form field fill-in or signing"
+msgstr "Заполнение или подписание полей формы"
+
+#: AESify.py:242
+msgid "Allow form field fill-in, signing and creation of template pages"
+msgstr "Разрешить заполнять поля формы, подписывать и создавать шаблонные страницы"
+
+#: AESify.py:243
+msgid "Forms, Signing, Template Pages"
+msgstr "Формы, Подписание, Шаблоны страниц"
+
+#: AESify.py:243
+msgid ""
+"Allow changing the document, document assembly, form field fill-in, signing "
+"and creation of template pages"
+msgstr "Разрешить изменять документ, собирать документ, заполнять "
+"поля формы, подписывать и создавать шаблонные страницы"
+
+#: AESify.py:244
+msgid "Document Restrictions"
+msgstr "Ограничения на документы"
+
+#: AESify.py:369
+msgid "Missing or wrong password"
+msgstr "Отсутствие или неправильный пароль"
+
+#: AESify.py:374
+msgid "Unable to open file."
+msgstr "Невозможно открыть файл."
+
+#: AESify.py:415
+msgid ""
+"Error: If the owner password is blank the open passwort should be blank as "
+"well."
+msgstr "Ошибка: Если пароль владельца пуст, открытый пароль также должен быть "
+"пустым."
+
+#: AESify.py:418
+msgid "The open password contains invalid characters."
+msgstr "Открытый пароль содержит недопустимые символы."
+
+#: AESify.py:421
+msgid "The owner password contains invalid characters."
+msgstr "Пароль владельца содержит недопустимые символы."
+
+#: AESify.py:450
+msgid "File saved."
+msgstr "Файл сохранен."
+
+#: AESify.py:452
+msgid "An unexpected error occured... :("
+msgstr "Возникла непредвиденная ошибка... :("
+
+#: AESify.py:454
+msgid "Please select an input file first!"
+msgstr "Пожалуйста, сначала выберите входной файл!"
