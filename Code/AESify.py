@@ -32,7 +32,7 @@ localization.install()
 _=localization.gettext
 
 aboutPage = 'https://github.com/digidigital/AESify/blob/main/About.md'
-version = '1.5.2'
+version = '1.5.3-beta'
 applicationTitle = _('AESify {0} - Encrypt PDF-Files Easily').format(version)
 showPasswordText = _('Show password')
 copyPasswordText = _('Copy password to clipboard')
