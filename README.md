@@ -14,7 +14,7 @@ Encrypt and protect PDF files - A GUI for pikepdf -> qpdf
     * Filling in form fields
 * Define a page range if you just want to export a part of your PDF
 * Create strong passwords
-* Ready for localization (EN and DE already included)
+* Ready for localization (EN, DE and RU already included)
 * Supported OS: Windows 10 and Linux (e.g. Ubuntu 20.04) 
 
 ## Installation
