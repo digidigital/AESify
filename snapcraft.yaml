@@ -7,7 +7,7 @@ description: |
   With AESify you can encrypt PDF files with "military grade" 
   Advanced Encryption Standard (AES) encryption, set "Document open" 
   and "Permissions" passwords, set document restrictions and define a 
-  page range if you just want to export a part of your PDF.
+  page range if you want to export a part of your PDF.
   If you want to access removable (mounted) media/drives do not
   forget to allow read/write access in AESify's snap store permission 
   settings! 
@@ -23,7 +23,7 @@ apps:
     command: python3 $SNAP/Code/AESify.py
     command-chain: [bin/debian-multiarch-triplet-provider-launch, bin/tcltk-launch]
     desktop: /build/aesify/parts/get-source/src/gui/aesify.desktop
-    extensions: [gnome-3-28]
+    extensions: [gnome-3-34]
     plugs:
       - home
       - removable-media
