@@ -17,7 +17,9 @@ license: MPL-2.0
 compression: lzo 
 grade: stable # 'stable' 'devel'
 confinement: strict # 'strict' 'devmode'
-architectures: [amd64, i386]
+architectures:
+  - build-on: amd64
+  - build-on: i386
 
 apps:
   aesify:
