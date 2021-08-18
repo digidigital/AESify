@@ -32,7 +32,7 @@ in your terminal.
 
 If your Linux Distro does not have <code>snap</code> pre-installed you can find instructions for installing <code>snap</code> [here.](https://snapcraft.io/docs/installing-snapd)
 
-The easiest way to "install" AESify on **Windows** is to download one of the release packages, unzip and simply run the binary.
+The easiest way to "install" AESify on **Windows** is to download the [release package](https://github.com/digidigital/AESify/releases/tag/v1.5.1), unzip and simply run the binary.
 
 Alternatively you can download the code folder and run the AESify.py script. In this case you have to install the packages PySimpleGUI, pyperclip and pikepdf using pip3.     
 
