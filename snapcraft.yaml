@@ -1,6 +1,6 @@
 name: aesify # you probably want to 'snapcraft register <name>'
 title: AESify
-base: core18 # the base snap is the execution environment for this snap
+base: core20 # the base snap is the execution environment for this snap
 adopt-info: aesify
 summary: Encrypt PDF-Files easily with 128-Bit or 256-Bit AES encyption
 description: |
@@ -12,7 +12,6 @@ description: |
   forget to allow read/write access in AESify's snap store permission 
   settings! 
 
-icon: shield.svg
 license: MPL-2.0
 compression: lzo 
 grade: stable # 'stable' 'devel'
@@ -23,16 +22,13 @@ architectures:
 
 apps:
   aesify:
-    command: python3 $SNAP/Code/AESify.py
+    command: bin/python3.9 $SNAP/Code/AESify.py
     command-chain: [bin/debian-multiarch-triplet-provider-launch, bin/tcltk-launch]
-    desktop: /build/aesify/parts/get-source/src/gui/aesify.desktop
-    extensions: [gnome-3-28]
+    desktop: /root/stage/gui/aesify.desktop
+    extensions: [gnome-3-38]
     plugs:
       - home
       - removable-media
-      - desktop
-      - desktop-legacy
-      - wayland
       - unity7
       - x11
     
@@ -51,10 +47,32 @@ parts:
     source: https://github.com/digidigital/AESify.git
     source-type: git
     python-packages: [pyperclip, PySimpleGUI, pikepdf]
-    stage-packages: [xclip, python3-tk, tcl] 
+    
     override-pull: |
       snapcraftctl pull  
       snapcraftctl set-version "$(git describe --tags)"
 
+    build-environment:
+      - SNAPCRAFT_PYTHON_INTERPRETER: python3.9
+        # python3.9 lives in $SNAPCRAFT_PART_INSTALL/bin
+      - PATH: $SNAPCRAFT_PART_INSTALL/bin:$PATH
+      - PYTHONPATH: ''
 
-   
+    build-packages:
+      - python3.9-venv
+      - python3.9-dev
+      
+    override-build: |
+      # Work around a bug in snapcraft python plugin
+      # https://forum.snapcraft.io/t/build-a-snap-with-any-version-of-python-i-want/10420/8
+      rm -rf $SNAPCRAFT_PART_INSTALL/usr/lib/python3.9/distutils
+      cp -r /usr/lib/python3.9/distutils $SNAPCRAFT_PART_INSTALL/usr/lib/python3.9/distutils
+      mkdir -p $SNAPCRAFT_PART_INSTALL/usr/include/
+      cp -r /usr/include/python3.9 $SNAPCRAFT_PART_INSTALL/usr/include/python3.9
+      snapcraftctl build
+
+    stage-packages:
+      - python3.9-venv
+      - python3-tk
+      - xclip 
+      - tcl 
