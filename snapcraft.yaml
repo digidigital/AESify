@@ -22,9 +22,9 @@ architectures:
 
 apps:
   aesify:
-    command: bin/python3.8 $SNAP/Code/AESify.py
+    command: bin/python3.9 $SNAP/Code/AESify.py
     command-chain: [bin/debian-multiarch-triplet-provider-launch, bin/tcltk-launch]
-    desktop: /root/stage/gui/aesify.desktop
+    desktop: ${SNAPCRAFT_STAGE}/gui/aesify.desktop
     extensions: [gnome-3-38]
     plugs:
       - home
@@ -53,26 +53,26 @@ parts:
       snapcraftctl set-version "$(git describe --tags)"
 
     build-environment:
-      - SNAPCRAFT_PYTHON_INTERPRETER: python3.8
-        # python3.8 lives in $SNAPCRAFT_PART_INSTALL/bin
+      - SNAPCRAFT_PYTHON_INTERPRETER: python3.9
+        # python3.9 lives in $SNAPCRAFT_PART_INSTALL/bin
       - PATH: $SNAPCRAFT_PART_INSTALL/bin:$PATH
       - PYTHONPATH: ''
 
     build-packages:
-      - python3.8-venv
-      - python3.8-dev
+      - python3.9-venv
+      - python3.9-dev
       
     override-build: |
       # Work around a bug in snapcraft python plugin
       # https://forum.snapcraft.io/t/build-a-snap-with-any-version-of-python-i-want/10420/8
-      rm -rf $SNAPCRAFT_PART_INSTALL/usr/lib/python3.8/distutils
-      cp -r /usr/lib/python3.8/distutils $SNAPCRAFT_PART_INSTALL/usr/lib/python3.8/distutils
+      rm -rf $SNAPCRAFT_PART_INSTALL/usr/lib/python3.9/distutils
+      cp -r /usr/lib/python3.8/distutils $SNAPCRAFT_PART_INSTALL/usr/lib/python3.9/distutils
       mkdir -p $SNAPCRAFT_PART_INSTALL/usr/include/
-      cp -r /usr/include/python3.8 $SNAPCRAFT_PART_INSTALL/usr/include/python3.8
+      cp -r /usr/include/python3.9 $SNAPCRAFT_PART_INSTALL/usr/include/python3.9
       snapcraftctl build
 
     stage-packages:
-      - python3.8-venv
+      - python3.9-venv
       - python3-tk
       - xclip 
       - tcl 
