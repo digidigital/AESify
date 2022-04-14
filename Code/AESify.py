@@ -153,11 +153,10 @@ def updatePassword(key, password):
 
 # Check if pyperclip dependencies are installed or if we are in a Snap evironment where right-click is buggy
 if sys.platform.startswith('linux'):   
-    '''
+    
     if "SNAP_COMMON" in environ and (pyperclip._executable_exists('xclip') or pyperclip._executable_exists('xsel') or pyperclip._executable_exists('wl-clipboard')):
         copyPasteEnabled=True
         rightClickMenu=[]
-    '''
     if pyperclip._executable_exists('xclip') or pyperclip._executable_exists('xsel') or pyperclip._executable_exists('wl-clipboard'):
         copyPasteEnabled=True
         rightClickMenu=[copyString, pasteString]  
