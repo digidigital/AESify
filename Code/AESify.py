@@ -157,7 +157,7 @@ if sys.platform.startswith('linux'):
     if "SNAP_COMMON" in environ and (pyperclip._executable_exists('xclip') or pyperclip._executable_exists('xsel') or pyperclip._executable_exists('wl-clipboard')):
         copyPasteEnabled=True
         rightClickMenu=[]
-    if pyperclip._executable_exists('xclip') or pyperclip._executable_exists('xsel') or pyperclip._executable_exists('wl-clipboard'):
+    elif pyperclip._executable_exists('xclip') or pyperclip._executable_exists('xsel') or pyperclip._executable_exists('wl-clipboard'):
         copyPasteEnabled=True
         rightClickMenu=[copyString, pasteString]  
     else:
