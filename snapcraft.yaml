@@ -66,9 +66,9 @@ parts:
       # Work around a bug in snapcraft python plugin
       # https://forum.snapcraft.io/t/build-a-snap-with-any-version-of-python-i-want/10420/8
       rm -rf $SNAPCRAFT_PART_INSTALL/usr/lib/python3.8/distutils
-      cp -r /usr/lib/python3.9/distutils $SNAPCRAFT_PART_INSTALL/usr/lib/python3.8/distutils
+      cp -r /usr/lib/python3.8/distutils $SNAPCRAFT_PART_INSTALL/usr/lib/python3.8/distutils
       mkdir -p $SNAPCRAFT_PART_INSTALL/usr/include/
-      cp -r /usr/include/python3.9 $SNAPCRAFT_PART_INSTALL/usr/include/python3.8
+      cp -r /usr/include/python3.8 $SNAPCRAFT_PART_INSTALL/usr/include/python3.8
       snapcraftctl build
 
     stage-packages:
