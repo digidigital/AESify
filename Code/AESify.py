@@ -32,7 +32,7 @@ localization.install()
 _=localization.gettext
 
 aboutPage = 'https://github.com/digidigital/AESify/blob/main/About.md'
-version = '1.5.3'
+version = '1.5.4'
 applicationTitle = _('AESify {0} - Encrypt PDF-Files Easily').format(version)
 showPasswordText = _('Show password')
 copyPasswordText = _('Copy password to clipboard')
@@ -153,10 +153,12 @@ def updatePassword(key, password):
 
 # Check if pyperclip dependencies are installed or if we are in a Snap evironment where right-click is buggy
 if sys.platform.startswith('linux'):   
+    '''
     if "SNAP_COMMON" in environ and (pyperclip._executable_exists('xclip') or pyperclip._executable_exists('xsel') or pyperclip._executable_exists('wl-clipboard')):
         copyPasteEnabled=True
         rightClickMenu=[]
-    elif pyperclip._executable_exists('xclip') or pyperclip._executable_exists('xsel') or pyperclip._executable_exists('wl-clipboard'):
+    '''
+    if pyperclip._executable_exists('xclip') or pyperclip._executable_exists('xsel') or pyperclip._executable_exists('wl-clipboard'):
         copyPasteEnabled=True
         rightClickMenu=[copyString, pasteString]  
     else:
