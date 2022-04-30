@@ -22,7 +22,7 @@ option = {
 
 
 setup(  name = "AESify",
-        version = "1.5.1",
+        version = "1.5.5",
         description = "AESify - Encrypt PDF-Files Easily",
         options = option ,
         #executables = [Executable("AESify.py", base=base)])

@@ -1,9 +1,10 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # coding: utf-8
 from os import path, getcwd, environ 
 import locale
 import secrets
 import webbrowser
+import darkdetect
 import gettext
 import sys
 import re
@@ -21,7 +22,13 @@ except Exception:
 #set the script root if in Snap environment
 if "SNAP_COMMON" in environ:
     scriptRoot = environ['SNAP'] + '/Code/'
-    
+
+#set home dir
+try:
+    user_home = environ['SNAP_REAL_HOME']
+except KeyError:
+    user_home = environ['HOME']
+
 # Environment of Windows executable created with cxFreeze seems to have no language setting in environ
 if "LANG" not in environ:
     environ['LANG'] = locale.getdefaultlocale()[0] 
@@ -32,7 +39,7 @@ localization.install()
 _=localization.gettext
 
 aboutPage = 'https://github.com/digidigital/AESify/blob/main/About.md'
-version = '1.5.4'
+version = '1.5.5'
 applicationTitle = _('AESify {0} - Encrypt PDF-Files Easily').format(version)
 showPasswordText = _('Show password')
 copyPasswordText = _('Copy password to clipboard')
@@ -45,7 +52,38 @@ pasteString=_('Paste') + '::Paste'
 # Characters that can be misinterpreted by humans (1 I l | O 0 o ' ` , . / \ ;) and some hard to reach special characters have been removed 
 passwordPool = '23456789abcdefghjkmnrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ!#$%&()*+-<=>?@[]_:' 
 
-theme='DefaultNoMoreNagging'
+# Detect mode (light / dark9 and select theme
+if darkdetect.isDark():
+    themedef = {
+    'BACKGROUND': '#272727', 
+    'TEXT': '#CCCCCC', 
+    'INPUT': '#222222', 
+    'TEXT_INPUT': '#CCCCCC',
+    'SCROLL': '#4A4A4A',
+    'BUTTON': ('#CCCCCC', '#373737'), 
+    'PROGRESS': ('#E95420', '#4A4A4A'), 
+    'BORDER': 1, 
+    'SLIDER_DEPTH': 0, 
+    'PROGRESS_DEPTH': 0,
+    'COLOR_LIST': ['#CCCCCC', '#2A2A2A', '#E95420', '#272727'], 
+    'DESCRIPTION': ['Grey', 'White', 'Orange'] }
+    
+    # Colors not taken from theme:
+    readonly_background_color = '#222222'
+    readonly_text_color       = '#CCCCCC'
+    highlight_bg_color        = '#E95420'
+    highlight_t_color         = 'white'
+    sg.theme_add_new ('MimicJammyJellyfishDark', themedef)
+
+    theme='MimicJammyJellyfishDark'
+else:    
+    theme='DefaultNoMoreNagging'
+
+    # Colors not taken from theme:
+    readonly_background_color = None
+    readonly_text_color       = None
+    highlight_bg_color        = 'green'
+    highlight_t_color         = 'white'
 sg.theme(theme)   
 background = sg.LOOK_AND_FEEL_TABLE[theme]['BACKGROUND']
 
@@ -135,7 +173,19 @@ def popUp(message):
             break
         else:
             popWindow.close()
-            
+
+def updateInitialFolders():
+    if window['-Filename-'].get() != '':
+        window['-BrowseFile-'].InitialFolder = path.dirname(window['-Filename-'].get()) 
+    else:
+        window['-BrowseFile-'].InitialFolder = user_home  
+    
+    if window['-FilenameOut-'].get() != '':
+        window['-BrowseOutFile-'].InitialFolder = path.dirname(window['-FilenameOut-'].get()) 
+    else:
+        window['-BrowseOutFile-'].InitialFolder = user_home  
+              
+
 # Updates the permission checkboxes according to pdf´s attributes
 def updatePermission(pdf, permission, checkboxName):
     if getattr(pdf.allow, permission):
@@ -159,14 +209,14 @@ if sys.platform.startswith('linux'):
         rightClickMenu=[]
     elif pyperclip._executable_exists('xclip') or pyperclip._executable_exists('xsel') or pyperclip._executable_exists('wl-clipboard'):
         copyPasteEnabled=True
-        rightClickMenu=[copyString, pasteString]  
+        rightClickMenu=[copyString, pasteString, 'Close']  
     else:
         sg.popup_no_titlebar(_("In order to use right click copy/paste please install package 'xclip', 'xsel or 'wl-clipboard'. You can still use 'CTRL + v' to paste passwords."))
         copyPasteEnabled=False
         rightClickMenu=[]
 else:
     copyPasteEnabled=True
-    rightClickMenu=[copyString, pasteString]
+    rightClickMenu=[copyString, pasteString, 'Close' ]
 
 # Centralized layout settings
 textSizeDefault=(58,1)
@@ -177,9 +227,9 @@ progressBarSizeDefault=(48,20)
 column1 = [
     [sg.Text(_('Input Settings'), font=('Helvetica', 15), justification='left')], 
     [sg.Text(_('PDF:'), size=(21,1)), 
-        sg.InputText(k='-FilenameShort-', size=textSizeDefault, readonly=True), 
+        sg.InputText(k='-FilenameShort-', size=textSizeDefault, text_color = 'black', readonly=True), 
         sg.InputText(k='-Filename-', visible=False,  readonly=True, enable_events=True), 
-        sg.FileBrowse(_('Browse'), file_types=(("PDF", "*.pdf"),),)
+        sg.FileBrowse(_('Browse'), k='-BrowseFile-', file_types=(("PDF", "*.pdf"),),)
     ],
     [sg.Text(_('Password:'), size=(21,1)), 
         sg.Column([[
@@ -202,9 +252,9 @@ column2 = [
 
 column3 = [
     [sg.Text(_('Output Settings'), font=('Helvetica', 15), justification='left')], 
-    [sg.Text(_('Encrypted PDF:'), size=(21,1)), sg.InputText(k='-FilenameOutShort-', size=textSizeDefault , readonly=True), 
+    [sg.Text(_('Encrypted PDF:'), size=(21,1)), sg.InputText(k='-FilenameOutShort-', text_color = 'black', size=textSizeDefault , readonly=True), 
         sg.InputText(k='-FilenameOut-', visible=False, readonly=True, enable_events=True), 
-        sg.SaveAs(_('Browse'), file_types=(("PDF", "*.pdf"),),)
+        sg.SaveAs(_('Browse'), k='-BrowseOutFile-',file_types=(("PDF", "*.pdf"),),)
     ],
     [sg.Text(_('Open Password:'), tooltip=openPasswordText, size=(21,1)), 
         sg.Column([
@@ -236,11 +286,11 @@ column3 = [
         sg.Radio('256-Bit AES', "RADIO1", k='AES256Bit', default=True)
     ],
     [sg.Text(_('Page range from:'), size=(21,1)), 
-        sg.InputText(k='-PageFrom-', default_text='1', readonly=True, size=(4,1), enable_events=True), 
+        sg.InputText(k='-PageFrom-', default_text='1', text_color = 'black', readonly=True, size=(4,1), enable_events=True), 
         sg.Slider(k='-PageFromSlider-', resolution=1, disable_number_display=True, size=sliderSizeDefault, range=(1,99), orientation='h', enable_events=True)
     ],
     [sg.Text(_('Page range to:'), size=(21,1)), 
-        sg.InputText(k='-PageTo-', default_text='1', readonly=True, size=(4,1), enable_events=True), 
+        sg.InputText(k='-PageTo-', default_text='1', text_color = 'black', readonly=True, size=(4,1), enable_events=True), 
         sg.Slider(k='-PageToSlider-', resolution=1, disable_number_display=True, size=sliderSizeDefault, range=(1,99), orientation='h', enable_events=True)
     ],
     [sg.Button(_('Save PDF'), k='Save PDF', pad=((5,0),(15,10)))]
@@ -265,11 +315,12 @@ layout = [
 ]
 
 # Create the Window
-window = sg.Window(applicationTitle, layout, font=('Helvetica'), icon=icons.shieldIcon_base64, finalize=True) 
+window = sg.Window(applicationTitle, layout, font=('Helvetica'), icon=icons.shieldIcon_base64,  finalize=True) 
 # Bind mouseover to password columns so we know where to copy/paste in the event loop
 window['-PasswordInColumn-'].bind('<Enter>', '_MOUSEOVER')
 window['-PasswordUserColumn-'].bind('<Enter>', '_MOUSEOVER')
 window['-PasswordOwnerColumn-'].bind('<Enter>', '_MOUSEOVER')
+updateInitialFolders()
 
 # Event Loop to process "events" and get the "values" of the inputs
 while True:
@@ -378,7 +429,8 @@ while True:
                 outfile = inPath + "/encrypted-" + inFilename 
                 window['-FilenameOut-'].update(value = outfile)
                 window['-FilenameOutShort-'].update(value = limitFilenameLen(outfile))
-        
+            updateInitialFolders()
+
         except PasswordError:
             popUp(_('Missing or wrong password'))
             window['-Filename-'].update(value = '')
@@ -392,6 +444,7 @@ while True:
     # Check length of manually selected filename and shorten it to fit in text field if necessary
     if event == '-FilenameOut-' and not values['-FilenameOut-'] == '': 
         window['-FilenameOutShort-'].update(value = limitFilenameLen(values['-FilenameOut-']))
+        updateInitialFolders()
 
     # Synch "pagerange from" slider with displayed text
     if event == '-PageFromSlider-': 
