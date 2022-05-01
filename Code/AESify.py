@@ -201,22 +201,24 @@ def updatePassword(key, password):
     key = re.sub('Password', '', key)
     window['-Complexity' + key + '-'].update_bar(evalPassword(password))
 
-# Check if pyperclip dependencies are installed or if we are in a Snap evironment where right-click is buggy
+# Check if pyperclip dependencies are installed or if we are in an evironment where right-click is buggy
+rightclickEnabled=[copyString, pasteString, 'Close'] 
+rightclickDisabled=[] 
 if sys.platform.startswith('linux'):   
     
     if "SNAP_COMMON" in environ and (pyperclip._executable_exists('xclip') or pyperclip._executable_exists('xsel') or pyperclip._executable_exists('wl-clipboard')):
         copyPasteEnabled=True
-        rightClickMenu=[]
+        rightClickMenu=rightclickEnabled
     elif pyperclip._executable_exists('xclip') or pyperclip._executable_exists('xsel') or pyperclip._executable_exists('wl-clipboard'):
         copyPasteEnabled=True
-        rightClickMenu=[copyString, pasteString, 'Close']  
+        rightClickMenu=rightclickEnabled  
     else:
         sg.popup_no_titlebar(_("In order to use right click copy/paste please install package 'xclip', 'xsel or 'wl-clipboard'. You can still use 'CTRL + v' to paste passwords."))
         copyPasteEnabled=False
-        rightClickMenu=[]
+        rightClickMenu=rightclickDisabled
 else:
     copyPasteEnabled=True
-    rightClickMenu=[copyString, pasteString, 'Close' ]
+    rightClickMenu=rightclickEnabled
 
 # Centralized layout settings
 textSizeDefault=(58,1)
