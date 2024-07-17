@@ -46,7 +46,7 @@ parts:
     plugin: python
     source: https://github.com/digidigital/AESify.git
     source-type: git
-    python-packages: [pyperclip, PySimpleGUI<=4.60.5, pikepdf, darkdetect]
+    python-packages: [pyperclip, pikepdf, darkdetect]
     
     override-pull: |
       snapcraftctl pull  
