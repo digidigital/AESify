@@ -9,7 +9,7 @@ import gettext
 import sys
 import re
 import AESifyIcons as icons
-import PySimpleGUI as sg
+import PySimpleGUI_4_60 as sg
 import pyperclip
 from pikepdf import Pdf, Page, Permissions, Encryption, PasswordError, PdfError, _cpphelpers 
 
